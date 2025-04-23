@@ -1,0 +1,22 @@
+:root {
+  --particles-color1: #ffcc00; /* amarillo saiyajin */
+  --particles-color2: #ff0000; /* rojo kaioken */
+  --particles-color3: #00ccff; /* azul ultra instinto */
+  --particles-color4: #ffffff; /* blanco aura */
+  --particles-opacity: 0.5;
+  --particles-size-min: 1;
+  --particles-size-max: 6;
+  --particles-speed: 1.2;
+}
+
+
+.particles-ki {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+

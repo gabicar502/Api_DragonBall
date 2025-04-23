@@ -1,0 +1,83 @@
+.header-dragonball {
+  background: linear-gradient(to right, #1a1a1a, #2c2c2c); /* Fondo oscuro degradado */
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.logo-dragonball {
+  width: 100%;
+  max-width: 600px; 
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+}
+
+.header-dragonball h1 {
+  font-size: 2.8rem;
+  color: #ffa726;
+  margin-bottom: 0.5rem;
+}
+
+.header-dragonball p {
+  font-size: 1.1rem;
+  color: #eeeeee; 
+  margin-bottom: 1rem;
+}
+
+.counter-box {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.counter-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.navbar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-weight: bold;
+}
+
+/* Estilos para enlaces del navbar */
+.navbar a {
+  text-decoration: none;
+  color: #f57c00;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ff9800;
+}
+
+/* RESPONSIVE para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  .header-dragonball h1 {
+    font-size: 2rem;
+  }
+
+  .header-dragonball p {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .navbar a {
+    font-size: 1rem;
+  }
+}
+
+  
