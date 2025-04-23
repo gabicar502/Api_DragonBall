@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import './DetallePersonaje.css';
-
 
 const DetallePersonaje = () => {
   const { id } = useParams();
@@ -32,30 +32,49 @@ const DetallePersonaje = () => {
 
       {/* FASES */}
       {personaje.transformations && personaje.transformations.length > 0 && (
-        <div className="fases-transformaciones" style={{ marginTop: "2rem" }}>
-          <h3>Fases / Transformaciones</h3>
+        <div style={{ marginTop: "2rem" }}>
+          <Typography variant="h5" sx={{ fontWeight: 'bold', color: 'orange', mb: 2 }}>
+            Fases / Transformaciones
+          </Typography>
           <div style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: "1rem",
-            marginTop: "1rem"
+            gap: "1rem"
           }}>
             {personaje.transformations.map(fase => (
-              <div key={fase.id} style={{
-                background: "#fff3e0",
-                padding: "1rem",
-                borderRadius: "10px",
-                width: "200px",
-                boxShadow: "0 4px 8px"
-              }}>
-                <img
-                  src={fase.image}
+              <Card key={fase.id}
+                sx={{
+                  width: 240,
+                  height: 340,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  backgroundColor: "#fff3e0",
+                  boxShadow: 4,
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  transition: 'transform 0.3s',
+                  '&:hover': { transform: 'scale(1.05)' }
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={fase.image}
                   alt={fase.name}
-                  style={{ width: "100%", borderRadius: "8px" }}
+                  sx={{
+                    width: "100%",
+                    height: 200,
+                    objectFit: "contain",
+                    backgroundColor: "#fff"
+                  }}
                 />
-                <p style={{ marginTop: "0.5rem", fontWeight: "bold" }}>{fase.name}</p>
-              </div>
+                <CardContent sx={{ textAlign: "center", padding: "0.5rem" }}>
+                  <Typography variant="body1" fontWeight="bold">
+                    {fase.name}
+                  </Typography>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
