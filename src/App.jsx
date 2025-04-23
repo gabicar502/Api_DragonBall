@@ -7,6 +7,7 @@ import DetallePersonaje from './Pages/DetallePersonaje';
 import Masculino from './Pages/Masculino';
 import Femenino from './Pages/Femenino';
 import Particulas from "./Efectos/ParticlesKi";
+import NotFound from './Pages/NotFound';
 import "./App.css";
 
 const App = () => {
@@ -27,10 +28,8 @@ const App = () => {
       if (data.items.length > 0) {
         const nuevos = [...arrayObjects, ...data.items];
 
-        // Eliminar duplicados por ID
+        // Eliminar duplicados por ID y ordenar por ID ascendente
         const unicos = Array.from(new Map(nuevos.map(obj => [obj.id, obj])).values());
-
-        // Ordenar por ID ascendente
         unicos.sort((a, b) => a.id - b.id);
 
         setArrayObjects(unicos);
@@ -46,17 +45,16 @@ const App = () => {
     }
   }, [loading, hasMore, arrayObjects]);
 
-  // ✅ Cargar personajes solo si estamos en inicio y no hay personajes
+  // Cargar personajes si estamos en inicio
   useEffect(() => {
-    if (location.pathname === "/" && arrayObjects.length === 0) {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0 });
       setArrayObjects([]);
       setCurrentPage(1);
       setHasMore(true);
-      setTimeout(() => {
-        fetchCharacters(1);
-      }, 50);
+      fetchCharacters(1);
     }
-  }, [location.pathname, arrayObjects.length, fetchCharacters]);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,6 +101,7 @@ const App = () => {
           <Route path="/personaje/:id" element={<DetallePersonaje />} />
           <Route path="/masculino" element={<Masculino />} />
           <Route path="/femenino" element={<Femenino />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>
@@ -110,4 +109,3 @@ const App = () => {
 };
 
 export default App;
-
